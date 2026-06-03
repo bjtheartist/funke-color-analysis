@@ -1,0 +1,6 @@
+*.md
+.git
+.gitignore
+.vercelignore
+.DS_Store
+*.bak
