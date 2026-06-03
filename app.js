@@ -516,7 +516,7 @@ function renderWorkspace() {
 
   workspace.innerHTML =
     '<div class="studio-commandbar">' +
-      '<div class="studio-brand"><span class="studio-mark"></span><span><strong>Drape Studio</strong><span>Funke Roberts color analysis workspace</span></span></div>' +
+      '<div class="studio-brand"><span class="studio-mark"></span><span><strong>Funke Roberts</strong><span>Colour Analysis Studio</span></span></div>' +
       '<div class="commandbar-actions">' +
         '<button class="command-btn" type="button" onclick="document.getElementById(\'photoInput\').click()">Upload Photo</button>' +
         '<button class="command-btn" type="button" onclick="loadSampleReport()">Load Sample</button>' +
@@ -543,19 +543,19 @@ function renderWorkspace() {
       '</aside>' +
       '<div class="palette-panel">' +
         '<section class="workspace-section">' +
-          '<div class="workspace-title-row"><h3>1. Compare Season Families</h3><p>Start broad: warm vs cool, light vs deep, soft vs bright.</p></div>' +
+          '<div class="workspace-title-row"><h3>Compare Season Families</h3><p>Start broad: warm vs cool, light vs deep, soft vs bright.</p></div>' +
           '<div class="family-board">' + familyCards + '</div>' +
         '</section>' +
         '<section class="workspace-section">' +
-          '<div class="workspace-title-row"><h3>2. Choose a ' + activeFamily + ' Sub-Season</h3><p>These swatches set the final palette used in the PDF.</p></div>' +
+          '<div class="workspace-title-row"><h3>Choose a ' + activeFamily + ' Sub-Season</h3><p>These swatches set the final palette used in the PDF.</p></div>' +
           '<div class="season-board">' + seasonCards + '</div>' +
         '</section>' +
         '<section class="workspace-section">' +
-          '<div class="workspace-title-row"><h3>3. Test Individual Drapes</h3><p>Click a swatch to preview it as the canvas background.</p></div>' +
+          '<div class="workspace-title-row"><h3>Test Individual Drapes</h3><p>Click a swatch to preview it as the canvas background.</p></div>' +
           '<div class="drape-board">' + drapeGroups(activeFamily) + '</div>' +
         '</section>' +
         '<section class="workspace-section">' +
-          '<div class="workspace-title-row"><h3>4. Analyst Notes</h3><p>Working notes stay on this screen and are hidden from the exported PDF.</p></div>' +
+          '<div class="workspace-title-row"><h3>Analyst Notes</h3><p>Working notes stay on this screen and are hidden from the exported PDF.</p></div>' +
           '<textarea class="workspace-notes" oninput="analysisNotes=this.value" placeholder="Example: warm tones clear the complexion; dark muted colors give the strongest harmony.">' + escapeHTML(analysisNotes) + '</textarea>' +
           '<div class="workspace-actions"><button class="workspace-action" type="button" onclick="renderReport()">Refresh Report Preview</button><button class="workspace-action secondary" type="button" onclick="window.print()">Export PDF</button></div>' +
         '</section>' +
@@ -898,19 +898,19 @@ function renderReport() {
     '<li>' + data.wardrobe.tip1 + '</li>' +
     '<li>' + data.wardrobe.tip2 + '</li>' +
     '<li>' + data.wardrobe.tip3 + '</li></ol>' +
-    '<div style="margin-top:20px"><h4 style="font-family:\'Cormorant Garamond\',serif;font-size:1.1rem;color:var(--heading);margin-bottom:10px">Suggested Pairings</h4>' +
+    '<div style="margin-top:20px"><h4 style="font-family:var(--display);font-size:1.1rem;color:var(--heading);margin-bottom:10px">Suggested Pairings</h4>' +
     '<div class="combo-section">' +
     data.wardrobe.combos.map(function(pair) {
       return '<div class="combo-pair"><div class="combo-circle" style="background:' + pair[0].hex + '"></div>' +
         '<span class="combo-plus">+</span><div class="combo-circle" style="background:' + pair[1].hex + '"></div></div>';
     }).join('') +
     '</div></div>' +
-    '<div style="margin-top:20px"><h4 style="font-family:\'Cormorant Garamond\',serif;font-size:1.1rem;color:var(--heading);margin-bottom:10px">Accent Colours</h4>' +
+    '<div style="margin-top:20px"><h4 style="font-family:var(--display);font-size:1.1rem;color:var(--heading);margin-bottom:10px">Accent Colours</h4>' +
     '<div class="accent-grid">' +
     data.wardrobe.accentColors.map(function(c) { return '<div class="swatch"><div class="swatch-color" style="background:' + c.hex + '"></div><div class="swatch-name">' + c.name + '</div><div class="swatch-code">' + c.pantone + '</div></div>'; }).join('') +
     '</div></div>' +
     '<div style="margin-top:24px;text-align:center;padding:16px;border-top:1px solid #ede3db">' +
-    '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.1rem;color:var(--accent);letter-spacing:2px">FUNKE ROBERTS</p>' +
+    '<p style="font-family:var(--display);font-size:1.1rem;color:var(--accent);letter-spacing:2px">FUNKE ROBERTS</p>' +
     '<p style="font-size:.8rem;color:#999">funkeroberts.com</p></div>' +
     '</div></div>';
 
