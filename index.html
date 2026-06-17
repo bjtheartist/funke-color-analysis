@@ -1,122 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Color Analysis Report — Funke Roberts</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Analysis Reports Preview | Funke Roberts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://funkeroberts.com/wp-content/uploads/2026/02/Untitled-512-x-512-px-180-x-180-px.png">
+  <link rel="apple-touch-icon" href="https://funkeroberts.com/wp-content/uploads/2026/02/Untitled-512-x-512-px-180-x-180-px.png">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <aside id="sidebar" aria-label="Report controls">
+    <a class="sidebar-logo" href="https://funkeroberts.com" target="_blank" rel="noreferrer">
+      <img src="https://funkeroberts.com/wp-content/uploads/2026/02/Untitled-180-x-60-px-1.png" alt="Funke Roberts">
+    </a>
+    <h1>Color Analysis</h1>
+    <p class="status-note">Client-facing report generator for 12 possible seasonal results.</p>
 
-<!-- SIDEBAR -->
-<div id="sidebar">
-  <h2>Color Analysis</h2>
-  <div class="brand">FUNKE ROBERTS</div>
-  <p class="status-note">Private draping studio for analysis and PDF export.</p>
+    <section class="flow-card" aria-label="Report flow">
+      <h2>Report Flow</h2>
+      <ol>
+        <li>Add the client name, date, and six reference images.</li>
+        <li>Select the final season result.</li>
+        <li>Review the intake evidence and add Funke's note.</li>
+        <li>Export the selected result as a PDF.</li>
+      </ol>
+    </section>
 
-  <div class="flow-card">
-    <h3>Analysis + Report Flow</h3>
-    <ol>
-      <li>Enter the client name and report date.</li>
-      <li>Upload the client photo and adjust the crop.</li>
-      <li>Use the workspace to compare season swatches.</li>
-      <li>Select the final season, then export/save the PDF.</li>
-    </ol>
-    <p>This is a private analyst workspace and report generator. The consultant makes the final call.</p>
-  </div>
+    <label for="clientName">Client Name</label>
+    <input id="clientName" type="text" placeholder="Enter client name" autocomplete="off">
 
-  <label for="clientName">Client Name</label>
-  <input type="text" id="clientName" placeholder="Enter client name" value="">
+    <label for="reportDate">Report Date</label>
+    <input id="reportDate" type="date">
 
-  <label for="reportDate">Date</label>
-  <input type="date" id="reportDate">
+    <label>Reference Images</label>
+    <div class="intake-slots" id="intakeSlots" aria-label="Client reference image uploads"></div>
+    <input id="photoInput" class="sr-only" type="file" accept="image/*">
 
-  <label>Client Photo</label>
-  <div class="photo-upload" id="photoUpload">
-    <p>Click or drag photo here</p>
-    <input type="file" id="photoInput" accept="image/*" style="display:none">
-  </div>
+    <section class="control-group" aria-label="Photo crop controls">
+      <h2>Headshot Adjustments</h2>
+      <div class="range-row">
+        <label for="photoZoom">Zoom</label>
+        <input id="photoZoom" type="range" min="1" max="3" step="0.1" value="1.2">
+        <span class="range-val" id="zoomValue">1.2x</span>
+      </div>
+      <div class="range-row">
+        <label for="photoX">X</label>
+        <input id="photoX" type="range" min="-50" max="50" step="1" value="0">
+        <span class="range-val" id="xValue">0%</span>
+      </div>
+      <div class="range-row">
+        <label for="photoY">Y</label>
+        <input id="photoY" type="range" min="-50" max="50" step="1" value="0">
+        <span class="range-val" id="yValue">0%</span>
+      </div>
+    </section>
 
-  <div class="control-group">
-    <h4>Photo Adjustments</h4>
-    <div class="range-row">
-      <label>Zoom</label>
-      <input type="range" id="photoZoom" min="1" max="3" step="0.1" value="1.2">
-      <span class="range-val" id="zoomVal">1.2x</span>
-    </div>
-    <div class="range-row">
-      <label>X</label>
-      <input type="range" id="photoX" min="-50" max="50" step="1" value="0">
-      <span class="range-val" id="xVal">0%</span>
-    </div>
-    <div class="range-row">
-      <label>Y</label>
-      <input type="range" id="photoY" min="-50" max="50" step="1" value="0">
-      <span class="range-val" id="yVal">0%</span>
-    </div>
-  </div>
+    <label for="seasonSelect">Final Season</label>
+    <select id="seasonSelect"></select>
 
-  <label for="seasonSelect">Final Season</label>
-  <select id="seasonSelect">
-    <option value="">— Select Season —</option>
-    <option value="Light Spring">Light Spring</option>
-    <option value="True Spring">True Spring</option>
-    <option value="Bright Spring">Bright Spring</option>
-    <option value="Light Summer">Light Summer</option>
-    <option value="True Summer">True Summer</option>
-    <option value="Soft Summer">Soft Summer</option>
-    <option value="Soft Autumn">Soft Autumn</option>
-    <option value="True Autumn">True Autumn</option>
-    <option value="Dark Autumn">Dark Autumn</option>
-    <option value="Bright Winter">Bright Winter</option>
-    <option value="True Winter">True Winter</option>
-    <option value="Dark Winter">Dark Winter</option>
-  </select>
+    <label for="personalNote">Personalized Note</label>
+    <textarea id="personalNote" rows="5" placeholder="Add Funke's client-specific observations or next steps."></textarea>
 
-  <label for="depthSelect">Depth</label>
-  <select id="depthSelect">
-    <option value="light">Light</option>
-    <option value="medium" selected>Medium</option>
-    <option value="deep">Deep</option>
-  </select>
+    <button class="btn" id="refreshReport" type="button">Generate Report</button>
+    <button class="btn btn-outline" id="loadSample" type="button">Load Sample</button>
+    <button class="btn export-btn" id="exportPdf" type="button">Export / Save PDF</button>
+    <p class="shortcut">In the print window, choose Save as PDF.</p>
+  </aside>
 
-  <label for="contrastSelect">Contrast</label>
-  <select id="contrastSelect">
-    <option value="low">Low</option>
-    <option value="medium" selected>Medium to High</option>
-    <option value="high">High</option>
-  </select>
-
-  <button class="btn" onclick="renderReport()">Generate Client Report</button>
-  <button class="btn btn-outline" onclick="loadSampleReport()" style="margin-top:8px">Load Sample Preview</button>
-  <button class="btn" onclick="window.print()" style="margin-top:8px">Export / Save PDF</button>
-  <div class="shortcut">In the print window, choose Save as PDF</div>
-</div>
-
-<!-- REPORT PAGES -->
-<div id="report">
-  <section class="workspace" id="analysisWorkspace"></section>
-  <div id="reportContent">
-    <div class="page">
-      <div class="cover" style="display:flex;align-items:center;justify-content:center">
-        <div class="placeholder-panel">
-          <h2>Color Analysis Report</h2>
-          <p>Use the workspace above to compare swatches and choose the final color season. The report pages will update once a season is selected.</p>
-          <div class="placeholder-steps">
-            <div class="placeholder-step"><strong>1. Add Details</strong><span>Name, date, and client photo.</span></div>
-            <div class="placeholder-step"><strong>2. Compare Swatches</strong><span>Review family and sub-season boards.</span></div>
-            <div class="placeholder-step"><strong>3. Set Final Season</strong><span>The selected palette drives the report.</span></div>
-            <div class="placeholder-step"><strong>4. Export PDF</strong><span>Use Export / Save PDF when ready.</span></div>
+  <main id="report">
+    <section class="workspace" aria-label="Report workspace">
+      <div class="studio-commandbar">
+        <div class="studio-brand">
+          <span class="studio-mark" aria-hidden="true"></span>
+          <div>
+            <strong>Funke Roberts</strong>
+            <span>Color Analysis Report System</span>
           </div>
         </div>
+        <div class="commandbar-actions">
+          <button class="command-btn" type="button" data-command="load-sample">Load Sample</button>
+          <button class="command-btn" type="button" data-command="refresh-report">Refresh Report</button>
+          <button class="command-btn primary" type="button" data-command="export-pdf">Export PDF</button>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<script src="app.js"></script>
+      <div class="workspace-header">
+        <div>
+          <p class="workspace-kicker">Client Report Preview</p>
+          <h2 id="workspaceTitle">Deep Winter</h2>
+          <p id="workspaceSummary">The selected season report appears here with palette, shopping swatch, and styling direction.</p>
+        </div>
+        <div class="workspace-status">
+          <span id="previewStatus">Deep Winter Active</span>
+          <span>12 Reports Ready</span>
+        </div>
+      </div>
+
+      <div class="studio-stepper" aria-label="Report steps">
+        <div class="studio-step done">
+          <span class="studio-step-num">1</span>
+          <div><strong>Details</strong><span>Name, date, refs</span></div>
+        </div>
+        <div class="studio-step done">
+          <span class="studio-step-num">2</span>
+          <div><strong>Season</strong><span>Final result</span></div>
+        </div>
+        <div class="studio-step active">
+          <span class="studio-step-num">3</span>
+          <div><strong>Preview</strong><span>Client report</span></div>
+        </div>
+        <div class="studio-step">
+          <span class="studio-step-num">4</span>
+          <div><strong>Export</strong><span>Save PDF</span></div>
+        </div>
+      </div>
+
+      <div class="workspace-body">
+        <aside class="analysis-photo-panel">
+          <div class="stage-header">
+            <strong>Client Preview</strong>
+            <span>Six-image intake</span>
+          </div>
+          <div class="drape-canvas" id="workspacePhoto"></div>
+          <div class="drape-caption">
+            <strong id="workspaceSeasonLabel">Deep Winter</strong>
+            <span id="workspaceFamilyLabel">Winter report</span>
+          </div>
+          <div class="workspace-intake-strip" id="workspaceIntakeStrip" aria-label="Reference image status"></div>
+        </aside>
+
+        <section class="palette-panel" id="seasonWorkspace" aria-label="Season palette preview"></section>
+      </div>
+    </section>
+
+    <div id="reportContent" class="report-content"></div>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
